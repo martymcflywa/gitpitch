@@ -127,7 +127,7 @@ var events = reader
 
 - New up an EventStoreReader and pass in the path where the cache files live
 - `.GetEvents()` starts reading from the sequence Id + 1 you pass in
-- `.GetContent<T>()` deserializes MessagePack to the input `T`
+- `.GetContent<T>()` deserializes MessagePack to type `T`
 - Can replace `<EventProxy>` with `<SomeMercuryEvent>` if using Mercury variant
 - Returns `IEnumerable<T>`
 
