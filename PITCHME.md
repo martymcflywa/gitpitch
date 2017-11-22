@@ -44,6 +44,9 @@
 
 - See [`CCPF.EventStore.MessagePackReplicator`](https://github.com/CashConverters/CCPF.EventStore.MessagePackReplicator)
 - Was initially part of `DashboardReporting` repo but is now separated
+
+---
+
 - Three main components
     1. CCPF.EventStore.MessagePackReplicator
     2. CCPF.EventStore.MessagePackReader.Contractless
@@ -57,7 +60,10 @@
 - Replicates an event store to a binary flat file format
 - Currently points to OnPrem
     - No impact to prod cloud event store
-    - Only one point of contact to OnPrem rather than all BI team members querying it during dev rebuils
+    - Only one point of contact to OnPrem rather than all BI team members querying it during dev rebuilds
+
+---
+
 - Flat files written to local disk on host where read models are rebuilt/refreshed
     - Goal is fast read model rebuilds/refresh
     - Removes network bottleneck
@@ -80,9 +86,12 @@
 
 ---
 
-- Replicator currently deployed for testing at `\\AUPERNVME\c$\CCPF.EventStore.MessagePackReplicator.x.x.x`
-- Generated cache files at `\\AUPERNVME\c$\CCPF.EventStoreCache\Lz4MsgPackContent`
-- Can kick off replication by running this script `\\AUPERNVME\c$\MessagePackReplicator.ps1`
+- Replicator currently deployed for testing at:
+    - `\\AUPERNVME\c$\CCPF.EventStore.MessagePackReplicator.x.x.x`
+- Generated cache files at:
+    - `\\AUPERNVME\c$\CCPF.EventStoreCache\Lz4MsgPackContent`
+- Can kick off replication by running this script:
+    - `\\AUPERNVME\c$\MessagePackReplicator.ps1`
 - Will eventually move to AUPERNVME D:\ drive though
 
 ---
@@ -95,6 +104,9 @@
 - Mercury reader has dependency on `Mercury.Contracts`
     - Can deserialize to some Mercury Contract type
     - Uses Mercury Date type
+
+---
+
 - Have to write your own proxy types when using Contractless
     - Advantage of picking/choosing which fields you want
 
@@ -110,6 +122,8 @@ var events = reader
     .GetEvents(startSequenceId)
     .Select(rawEvent => rawEvent.GetContent<EventProxy>());
 ```
+
+---
 
 - New up an EventStoreReader and pass in the path where the cache files live
 - `.GetEvents()` starts reading from the sequence Id + 1 you pass in
@@ -152,6 +166,9 @@ var events = reader
     - Upgrade the database
     - Populate the read model
     - ...
+
+---
+
 - Any failed step will halt the process and generate notifications
 - Successful deployments stay in dev until...
 
