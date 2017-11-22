@@ -23,10 +23,10 @@
 
 ---
 
-- We want to minimize load from this source
+- We want to minimize load on this resource
 - It's on Azure
 - Expensive/slow to rebuild read models from event zero
-- But it's replicated to **OnPrem** SQL server
+- But it's replicated to **OnPrem** SQL server!
 
 ---
 
@@ -54,7 +54,7 @@
 
 ---
 
-## MessagePackReplicator
+## `MessagePackReplicator`
 
 - net461 executable
 - Replicates an event store to a binary flat file format
@@ -64,8 +64,8 @@
 
 ---
 
-- Flat files written to local disk on host where read models are rebuilt/refreshed
-    - Goal is fast read model rebuilds/refresh
+- Flat files written to local disk on host where read models are populated
+    - Goal is fast read model population
     - Removes network bottleneck
 
 ---
@@ -102,7 +102,7 @@
 - CCPF.EventStore.MessagePackReader.Contractless
 - Available in Cash Converters nuget feed
 - Mercury reader has dependency on `Mercury.Contracts`
-    - Can deserialize to some Mercury Contract type
+    - Can deserialize to Mercury Contract types
     - Uses Mercury Date type
 
 ---
@@ -122,6 +122,8 @@ var events = reader
     .GetEvents(startSequenceId)
     .Select(rawEvent => rawEvent.GetContent<EventProxy>());
 ```
+
+- Up to you to implement filtering/paging
 
 ---
 
