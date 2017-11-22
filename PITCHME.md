@@ -87,11 +87,11 @@
 ---
 
 - Replicator currently deployed for testing at:
-    - `\\AUPERNVME\c$\CCPF.EventStore.MessagePackReplicator.x.x.x`
+    - `AUPERNVME C:\`
 - Generated cache files at:
-    - `\\AUPERNVME\c$\CCPF.EventStoreCache\Lz4MsgPackContent`
+    - `AUPERNVME C:\CCPF.EventStoreCache\Lz4MsgPackContent`
 - Can kick off replication by running this script:
-    - `\\AUPERNVME\c$\MessagePackReplicator.ps1`
+    - `AUPERNVME C:\MessagePackReplicator.ps1`
 - Will eventually move to AUPERNVME D:\ drive though
 
 ---
