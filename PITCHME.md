@@ -1,4 +1,8 @@
-# BI event store replication
+# BI event store replication and deployment pipeline
+
+---
+
+## Event store replication
 
 ---
 
@@ -115,7 +119,7 @@ var events = reader
 
 ---
 
-# CI/CD
+## Deployment pipeline
 
 ---
 
